@@ -9,8 +9,8 @@ import streamlit as st
 
 import plotly.express as px
 
-import os
-print(os.getcwd())
+#import os
+#print(os.getcwd())
 
 dotenv.load_dotenv()
 
