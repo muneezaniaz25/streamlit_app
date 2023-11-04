@@ -1,7 +1,7 @@
 import requests,json
 import pandas as pd
-import os
-import dotenv
+#import os
+#import dotenv
 
 import altair as alt
 
@@ -12,11 +12,15 @@ import plotly.express as px
 #import os
 #print(os.getcwd())
 
-dotenv.load_dotenv()
+#dotenv.load_dotenv()
 
 
-api_key=os.getenv("API_KEY")
-sheet_id=os.getenv("SHEET_ID")
+api_key=st.secrets["secrets"]["API_KEY"]
+
+sheet_id=st.secrets["secrets"]["SHEET_ID"]
+
+#api_key=os.getenv("API_KEY")
+#sheet_id=os.getenv("SHEET_ID")
 #sheet_id = "1iSOLIKLDOn3uysScNUDOY9uR5qHx4HXiJhAT2wXB33Y"
 
 range_name = 'Sheet1!A1:K9729'
