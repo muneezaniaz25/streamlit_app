@@ -1,7 +1,6 @@
 import requests,json
 import pandas as pd
-#import os
-#import dotenv
+
 
 import altair as alt
 
@@ -9,19 +8,13 @@ import streamlit as st
 
 import plotly.express as px
 
-#import os
-#print(os.getcwd())
 
-#dotenv.load_dotenv()
 
 
 api_key=st.secrets["secrets"]["API_KEY"]
 
 sheet_id=st.secrets["secrets"]["SHEET_ID"]
 
-#api_key=os.getenv("API_KEY")
-#sheet_id=os.getenv("SHEET_ID")
-#sheet_id = "1iSOLIKLDOn3uysScNUDOY9uR5qHx4HXiJhAT2wXB33Y"
 
 range_name = 'Sheet1!A1:K9729'
 
@@ -62,26 +55,30 @@ st.set_page_config(
 
 st.title("Financial Consumer Complaints")
 
-#st.subheader(subheader)
 
 
-#st.write("Display Data for 'All States' or 'any' State")
-#col2=st.columns(5)
+container0 = st.container()
 
+con = container0.columns([1,1])
+container1 = st.container()
 
-container1=st.container()
-con_col1,con_col2,con_col3,con_col4,con_col5=container1.columns(5)
+con_col1, con_col2, con_col3, con_col4, con_col5 = container1.columns(5)
+
 with con_col5:
     selected_state = st.selectbox("Select State", ["All States"] + df['state'].unique().tolist())
 
     if selected_state == "All States":
         filtered_df = df
-        subhead=f"Display Data for {selected_state}"
+        subhead = f"Display Data for {selected_state}"
     else:
         filtered_df = df[df['state'] == selected_state]
-        subhead=f"Display Data for {selected_state}"
+        subhead = f"Display Data for {selected_state}"
 
-st.subheader(subhead)
+
+with con[0]:
+ #   st.subheader(subhead)
+    st.subheader(subhead)
+
 
 with con_col1:
     
